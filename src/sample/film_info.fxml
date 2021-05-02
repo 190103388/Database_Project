@@ -229,11 +229,6 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="dissButtom1" layoutX="216.0" layoutY="40.0" mnemonicParsing="false" onAction="#disslike" prefHeight="18.0" prefWidth="92.0" text="DISLIKE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                      <padding>
                         <Insets left="100.0" />

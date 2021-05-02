@@ -11,11 +11,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class FilterController implements Initializable {
+public class FilterController extends Controller implements Initializable {
     @FXML
     private TableView<Films> table;
 
@@ -56,7 +58,7 @@ public class FilterController implements Initializable {
         AGE.getItems().addAll( "","G", "PG", "PG-13", "R", "NC-17");
 
         GENRE.getItems().addAll( "","Action",  "Adventure", "Sci-Fi", "Thriller", "Comedy", "Western", "Family", "Animation", "Biography", "Drama", "Music", "War", "Crime", "Fantasy", "History", "Mystery", "Romance", "Horror", "Documentary","News","Sport");
-        YEAR.getItems().addAll( "","all","1960-1970", "1970-1980", "1980-1990", "1990-2000", "2000-2010", "2010-2020");
+        YEAR.getItems().addAll( "","1960-1970", "1970-1980", "1980-1990", "1990-2000", "2000-2010", "2010-2020");
 
     }
 
@@ -139,7 +141,6 @@ public class FilterController implements Initializable {
         listM =films.getObservableList(SQL);
         System.out.println(SQL);
         table.setItems(listM);
-//        ImageView imageView = new ImageView();
         IMG_COL.setCellValueFactory(new PropertyValueFactory<>("Images"));
         Title.setCellValueFactory(new PropertyValueFactory<Films, String>("Title"));
         AGE_COL.setCellValueFactory(new PropertyValueFactory<Films, String>("Age_rating"));
@@ -147,14 +148,15 @@ public class FilterController implements Initializable {
         YEAR_COL.setCellValueFactory(new PropertyValueFactory<Films, String>("Years"));
 
 
-
-//        IMG_COL.setCellValueFactory(new  PropertyValueFactory<Films,ImageView> >("img"));
-//        Title.setCellValueFactory(new PropertyValueFactory<Films,String> ("title"));
-//        YEAR_COL.setCellValueFactory(new PropertyValueFactory<Films,String> ("year"));
-//        AGE_COL.setCellValueFactory(new PropertyValueFactory<Films,String> ("age_rating"));
-//        GENRE_COL.setCellValueFactory(new PropertyValueFactory<Films,String> ("genres"));
-
-
+        table.setOnMouseClicked(e->{
+            try {
+                String s = table.getSelectionModel().getSelectedItem().getTitle();
+                System.out.println(s);
+                searcing(s);
+            } catch (IOException | SQLException ioException) {
+                ioException.printStackTrace();
+            }
+        });
     }
 
 }

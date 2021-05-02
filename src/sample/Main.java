@@ -28,25 +28,5 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    
 
-
-//    public static void main(String[] args) {
-//        DatabaseConnection databaseConnection = new DatabaseConnection();
-//        String SQL = "SELECT COUNT(*),year FROM sorted_movies GROUP BY year order by year";
-//
-//        ResultSet resultSet = null;
-//        try {
-//            resultSet = databaseConnection.getSet(SQL);
-//            if (resultSet.next()){
-//                while (resultSet.next()){
-//                    System.out.println(resultSet.getString(1)+" "+resultSet.getString(2));
-////                    observableList.add(yearsChart);
-//                }
-//            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//
-//    }
 }

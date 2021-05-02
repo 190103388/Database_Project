@@ -213,27 +213,11 @@ public class Controller implements Initializable {
     }
     public void searcing(String s) throws IOException, SQLException {
         int a =2;
-        String searching = searchedText.getText();
-//        String SQL = "SELECT * FROM sorted_movies Where title LIKE  '%"+s+"%'";
+
         String SQL2="select get_movie('"+s+"') from dual";
         System.out.println(SQL2);
 
         String[][] info = new String[1][15];
-//        ResultSet resultSet = null;
-//        try {
-//            DatabaseConnection databaseConnection = new DatabaseConnection();
-//            resultSet = databaseConnection.getSet(SQL2);
-//        } catch (SQLException e) {
-//            System.out.println("Oops, error!");
-//            e.printStackTrace();
-//        }
-//
-//            while (resultSet.next()){
-//                for (int i = 1; i <=14 ; i++) {
-//                    info[0][i] = resultSet.getString(i);
-//                }
-//
-//            }
         String n = "";
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
