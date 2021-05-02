@@ -219,12 +219,17 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button fx:id="LikeButtom" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="LIKE">
+                        <Button fx:id="LikeButtom" mnemonicParsing="false" onAction="#liked" prefHeight="38.0" prefWidth="95.0" text="LIKE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="dissButtom" mnemonicParsing="false" prefHeight="18.0" prefWidth="92.0" text="DISLIKE">
+                        <Button fx:id="dissButtom" mnemonicParsing="false" onAction="#disslike" prefHeight="18.0" prefWidth="92.0" text="DISLIKE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="dissButtom1" layoutX="216.0" layoutY="40.0" mnemonicParsing="false" onAction="#disslike" prefHeight="18.0" prefWidth="92.0" text="DISLIKE">
                            <font>
                               <Font size="18.0" />
                            </font>

@@ -32,6 +32,8 @@ public class SearchController  implements Initializable {
     @FXML
     private Label genresInfo;
 
+    String SgenresInfo;
+
     @FXML
     private Label yearInfo1;
 
@@ -124,6 +126,7 @@ public class SearchController  implements Initializable {
 //    }
 //
     public void setGenresInfo(String genres) {
+        this.SgenresInfo = genres;
         this.genresInfo.setText(genres);
     }
 
@@ -145,6 +148,24 @@ public class SearchController  implements Initializable {
 //            System.out.println("Oops, error!");
 //            e.printStackTrace();
 //        }
+    }
+
+    public Label getGenresInfo() {
+        return genresInfo;
+    }
+
+    public void liked() throws SQLException {
+        String SQL = "INSERT INTO user_preferences values (user_seq.nextval, 2 ,'"+SgenresInfo+"') ";
+        System.out.println(SQL);
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.getSet(SQL);
+        Stage stage = (Stage)LikeButtom.getScene().getWindow();
+        stage.close();
+    }
+
+    public void disslike(){
+        Stage stage = (Stage)dissButtom.getScene().getWindow();
+        stage.close();
     }
 
 

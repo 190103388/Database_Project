@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -61,8 +64,12 @@ public class Controller implements Initializable {
     private ListView<String> searchList;
 
 
+    @FXML
+    private PieChart PIE_CHAR;
 
 
+    @FXML
+    private BarChart<?, ?> BARCHART;
 
     String[][]links;
     int[] randomSan;
@@ -72,6 +79,22 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        Ages ages = new Ages();
+        XYChart.Series set1 = null;
+        try {
+            set1 = ages.getXY();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        BARCHART.getData().addAll(set1);
+
+        YearsChart yearsChart = new YearsChart();
+
+        ObservableList<PieChart.Data> pieChartData = yearsChart.getChart();
+
+        PIE_CHAR.setData(pieChartData);
+
+
         DatabaseConnection databaseConnection = new DatabaseConnection();
         searchedText.setOnKeyTyped(e->{
             System.out.println(searchedText.getText());
@@ -138,6 +161,10 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
+
+
+
+
     }
     public void viewMore1() throws IOException {
         viewMore(0);
@@ -157,14 +184,17 @@ public class Controller implements Initializable {
         SearchController searchController = fxmlLoader.getController();
         int i =0;
         searchController.setMovieName(links[a][2]);
-        searchController.setMovieAge(links[a][5]);
+        searchController.setMovieAge(links[a][4]);
         searchController.setMovieView(links[a][12]);
         searchController.setGenresInfo(links[a][8]);
         searchController.setDirectorInfo1(links[a][7]);
         searchController.setLanguageInfo1(links[a][10]);
         searchController.setYearInfo1(links[a][3]);
         searchController.setCountryInfo1(links[a][9]);
-        searchController.setRuntimeInfo1(links[a][11]);
+        searchController.setTomatoesInfo12(links[0][11]);
+        searchController.setIMDBInfo11(links[0][5]);
+        searchController.setAverageInfo1111(links[0][14]);
+        searchController.setRTInfo111(links[0][6]);
         System.out.println("123");
 //            i++;
 
@@ -258,7 +288,7 @@ public class Controller implements Initializable {
         System.out.println("123");
 
         System.out.println(info[0][11]+" "+info[0][5]+" "+info[0][14]+" "+info[0][6]+" ");
-        primaryStage.setTitle("Receptionist");
+        primaryStage.setTitle("Movie Into");
 
         primaryStage.setScene(new Scene(root, 1280, 750));
         primaryStage.show();

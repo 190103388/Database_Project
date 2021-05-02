@@ -12,7 +12,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class Main extends Application {
@@ -20,9 +21,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        Scene scene =new Scene(root, 1280, 800);
+        Scene scene =new Scene(root, 600, 400);
         scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -31,21 +32,21 @@ public class Main extends Application {
 
 
 //    public static void main(String[] args) {
-//        String SQL = "SELECT * FROM user_acc WHERE username = 'ravil' AND user_password = '12345'";
-//        String n = null;
-//        try {
-//            DatabaseConnection databaseConnection = new DatabaseConnection();
-//            ResultSet resultSet =databaseConnection.getSet(SQL);
-//            System.out.println(resultSet.next());
-//            while (resultSet.next()){
+//        DatabaseConnection databaseConnection = new DatabaseConnection();
+//        String SQL = "SELECT COUNT(*),year FROM sorted_movies GROUP BY year order by year";
 //
-//                n = resultSet.getString(2)+" "+resultSet.getString(3);
-//                System.out.println(resultSet.getInt(1));
+//        ResultSet resultSet = null;
+//        try {
+//            resultSet = databaseConnection.getSet(SQL);
+//            if (resultSet.next()){
+//                while (resultSet.next()){
+//                    System.out.println(resultSet.getString(1)+" "+resultSet.getString(2));
+////                    observableList.add(yearsChart);
+//                }
 //            }
-//        } catch (SQLException e) {
-//            System.out.println("Oops, error!");
-//            e.printStackTrace();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
 //        }
-
+//
 //    }
 }
